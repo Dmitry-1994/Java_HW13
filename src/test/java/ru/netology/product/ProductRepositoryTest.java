@@ -1,27 +1,26 @@
 package ru.netology.product;
 
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class ProductRepositoryTest {
     ProductRepository repository = new ProductRepository();
 
-    Book book_1 = new Book(111, "Harry Potter_I", 10, "Joan Rowling");
-    Book book_2 = new Book(222, "Harry Potter_II", 25, "Joan Rowling");
-    Book book_3 = new Book(333, "Lord of the Rings", 35, "John Ronald");
-    Smartphone smartphone_1 = new Smartphone(444, "Redmi_13", 10_000, "Xiaomi");
-    Smartphone smartphone_2 = new Smartphone(555, "iPhone_13", 50_000, "Apple");
+    Product book_1 = new Book(111, "Harry Potter_I", 10, "Joan Rowling");
+    Product book_2 = new Book(222, "Harry Potter_II", 25, "Joan Rowling");
+    Product book_3 = new Book(333, "Lord of the Rings", 35, "John Ronald");
+    Product smartphone_1 = new Smartphone(444, "Redmi_13", 10_000, "Xiaomi");
+    Product smartphone_2 = new Smartphone(555, "iPhone_13", 50_000, "Apple");
 
     @Test
-    public void saveNull(){
+    public void saveNull() {
         Product[] expected = {};
         Product[] actual = repository.findAll();
         Assertions.assertArrayEquals(expected, actual);
     }
 
     @Test
-    public void saveOne(){
+    public void saveOne() {
         repository.save(book_3);
 
         Product[] expected = {book_3};
@@ -30,20 +29,20 @@ public class ProductRepositoryTest {
     }
 
     @Test
-    public void saveMore(){
+    public void saveMore() {
         repository.save(book_1);
         repository.save(book_2);
         repository.save(book_3);
         repository.save(smartphone_1);
         repository.save(smartphone_2);
 
-        Product[] expected = {book_1, book_2,book_3, smartphone_1, smartphone_2};
+        Product[] expected = {book_1, book_2, book_3, smartphone_1, smartphone_2};
         Product[] actual = repository.findAll();
         Assertions.assertArrayEquals(expected, actual);
     }
 
     @Test
-    public void removeByIdOne(){
+    public void removeByIdOne() {
         repository.save(book_1);
         repository.save(book_2);
         repository.save(book_3);
@@ -52,13 +51,13 @@ public class ProductRepositoryTest {
 
         repository.removeById(111);
 
-        Product[] expected = {book_2,book_3, smartphone_1, smartphone_2};
+        Product[] expected = {book_2, book_3, smartphone_1, smartphone_2};
         Product[] actual = repository.findAll();
         Assertions.assertArrayEquals(expected, actual);
     }
 
     @Test
-    public void removeByIdFew(){
+    public void removeByIdFew() {
         repository.save(book_1);
         repository.save(book_2);
         repository.save(book_3);
@@ -75,7 +74,7 @@ public class ProductRepositoryTest {
     }
 
     @Test
-    public void removeByIdAll(){
+    public void removeByIdAll() {
         repository.save(book_1);
         repository.save(book_2);
         repository.save(book_3);
