@@ -1,5 +1,6 @@
 package ru.netology.product;
-public class Product{
+
+public class Product {
     protected int id;
     protected String name;
     protected int price;
@@ -10,11 +11,11 @@ public class Product{
         this.price = price;
     }
 
-    public int getId() {
-        return id;
+    public boolean matches(String search) {
+        return name.contains(search);
     }
 
-    public String getName() {
-        return name;
+    public int getId() {
+        return id;
     }
 }

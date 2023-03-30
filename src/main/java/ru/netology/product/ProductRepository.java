@@ -1,4 +1,5 @@
 package ru.netology.product;
+
 public class ProductRepository {
     private Product[] products = new Product[0];
 
